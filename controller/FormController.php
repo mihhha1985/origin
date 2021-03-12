@@ -12,7 +12,8 @@
 
             
 			if(Validate::validateEmail($email)){
-				$comment = addcslashes($comment, "><;");
+				$comment = addcslashes($comment, ";");
+				$comment = htmlspecialchars($comment);
 				$date = date("d.m.Y H:i", time());
 				$id = Comments::addNewComment($email, $comment, $date);
 				$arr['type'] = 'success';
